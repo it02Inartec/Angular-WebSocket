@@ -1,4 +1,4 @@
 Angular-WebSocket
 =================
 
-Pruebas
+Iniciando pruebas con funcionamiento websockets y php
