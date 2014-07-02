@@ -1,0 +1,2 @@
+Informacion seguida desde esta fuente:
+https://github.com/AngelKurtenBlog/SocketsPHP
