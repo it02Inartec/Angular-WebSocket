@@ -8,16 +8,16 @@ chat.on('connection', function(conn) {
     debugger;
     connections.push(conn);
     var number = connections.length;
-    conn.write("Welcome, User " + number);
+    conn.write("Bienvenido, Usuario " + number);
     conn.on('data', function(message) {
         for (var ii=0; ii < connections.length; ii++) {
-            connections[ii].write("User " + number + " says: " + message);
+            connections[ii].write("Usuario " + number + " dice: " + message);
         }
     });
     conn.on('close', function() {
         debugger;
         for (var ii=0; ii < connections.length; ii++) {
-            connections[ii].write("User " + number + " has disconnected");
+            connections[ii].write("Usuario " + number + " se ha desconectado");
         }
     });
 });

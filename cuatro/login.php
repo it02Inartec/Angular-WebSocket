@@ -16,30 +16,36 @@
 <body>
     <div class="container">
         <hr>
-        <?php if(!isset($_SESSION['usuario'])){ ?>
-        <div class="span5" ng-controller="loginCtrl">
-            <form>
-                <label>Usuario</label>
-                <input type="text" ng-model="usuario">
-                <br />
-                <label>Contraseña</label>
-                <input type="password" ng-model="contrasena">
-                <br />
-                <input type="submit" value="entrar" ng-click="doLogin()" class="btn btn-primary">
-                <div>{{aviso}}</div>
-            </form>
-        </div>
+        <?php
+        // Si existe el usuario conectado oculta div para iniciar sesion
+        if(!isset($_SESSION['usuario'])){
+        ?>
+            <div class="span5" ng-controller="loginCtrl">
+                <form>
+                    <label>Usuario</label>
+                    <input type="text" ng-model="usuario">
+                    <br />
+                    <label>Contraseña</label>
+                    <input type="password" ng-model="contrasena">
+                    <br />
+                    <input type="submit" value="entrar" ng-click="doLogin()" class="btn btn-primary">
+                    <div>{{aviso}}</div>
+                </form>
+            </div>
         <?php }
         if(!isset($_SESSION['usuario'])){ ?>
-        <div class="span1" ng-hide="true">
-        <?php } else {?>
-        <div class="span1" ng-hide="false">
+            <div class="span1" ng-hide="true">
+        <?php }
+        else {
+            include 'php/includ.php';
+        ?>
+            <div class="span1" ng-hide="false">
         <?php }?>
-            <b>Bienvenido</b>
-            <br>Usuario: {{aviso}}<?php echo $_SESSION['usuario']; ?>
-            <div ng-include src="'partials/task.html'"></div>
-        </div>
-
+                <b>Bienvenido</b>
+                <br>Usuario: {{aviso}}<?php if(isset($_SESSION['usuario'])) echo $_SESSION['usuario']; ?>
+                <div class="message_box" id="message_box"></div>
+                <div ng-include src="'partials/task.html'"></div>
+            </div>
    </div>
  </body>
 </html>
