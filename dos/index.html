@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WebSocket Test</title>
+  <meta charset="utf-8" >
+  <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular-csp.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular-animate.min.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+  <script type="text/javascript" src="js/angular-websocket.js"></script>
+</head>
+<body class="ng-cloak" ng-app="chat">
+  <div ng-controller="MessengerCtrl">
+    <h2>WebSocket Test</h2>
+    Conexion: {{ status }}
+    <div id="output" ng-repeat="message in messages">
+      Mensaje: {{ message.text }} <small>{{ message.created_at | date }}</small>
+    </div>
+  </div>
+</body>
+</html>

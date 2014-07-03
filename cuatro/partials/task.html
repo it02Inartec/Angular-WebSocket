@@ -1,0 +1,33 @@
+<div class="widget-box" id="recent-box" ng-controller="userController">
+	<div class="widget-header header-color-blue">
+		<div class="row">
+			<div class="col-sm-6">
+				<h4 class="bigger lighter">
+					<i class="glyphicon glyphicon-align-justify"></i>&nbsp;
+					Lista de Usuarios existentes
+				</h4>
+			</div>
+			<div class="col-sm-3">
+				<button ng-click="addNewClicked=!addNewClicked;" class="btn btn-sm btn-danger header-elements-margin">
+					<i class="glyphicon  glyphicon-plus"></i>&nbsp;Agregar Nuevo Usuario
+				</button>
+			</div>
+			<div class="col-sm-3">
+				<input type="text" ng-model="filterTask" class="form-control search header-elements-margin" placeholder="Filtrar Usuarios">
+			</div>
+		</div>
+	</div>
+	<div class="widget-body ">
+		<div class="task">
+			<label class="checkbox" ng-repeat="task in tasks | filter : filterTask">
+				<input 	type="checkbox"	value="{{task.status}}"	ng-checked="task.status==2"	ng-click="toggleStatus(task.id,task.status, task.usuario)"/> 
+				<span ng-class="{strike:task.status==2}">
+					{{task.usuario}} [{{task.id}}]
+				</span>
+				<a ng-click="deleteTask(task.id)" class="pull-right">
+					<i class="glyphicon glyphicon-trash"></i>
+				</a>
+			</label>
+		</div>
+	</div>
+</div>
