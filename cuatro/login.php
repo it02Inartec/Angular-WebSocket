@@ -1,4 +1,9 @@
-<?php session_start(); ?>
+<?php
+session_start();
+function salir(){
+    session_destroy();
+}
+?>
 <!DOCTYPE html>
 <html ng-app='myApp'>
 <head>
@@ -12,6 +17,11 @@
     <script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
     <script src="js/script.js"></script>
+    <script language="javascript" type="text/javascript">
+    function salir(){
+
+    }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -41,7 +51,7 @@
         ?>
             <div class="span1" ng-hide="false">
         <?php }?>
-                <b>Bienvenido</b>
+                <b>Bienvenido</b><input type="button" value="Salir" onclick="<?php //salir();?>">
                 <br>Usuario: {{aviso}}<?php if(isset($_SESSION['usuario'])) echo $_SESSION['usuario']; ?>
                 <div class="message_box" id="message_box"></div>
                 <div ng-include src="'partials/task.html'"></div>

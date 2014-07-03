@@ -31,6 +31,7 @@
          Socket::ValidationClient($ws_new, $header, $host, $port);
 
          // Preparamos el json que se recibira en chat.php cuando se conecta entra un usuario
+         //$response_new_client = Socket::EncriptMessage(json_encode(array('type'=>'system', 'message'=>Socket::GetClient($ws_new).' conectado')));
          $response_new_client = Socket::EncriptMessage(json_encode(array('type'=>'system', 'message'=>Socket::GetClient($ws_new).' conectado')));
 
          foreach ($clients as $ws_client) {
@@ -58,14 +59,6 @@
             $user_name = $received_text->name;
             $user_message = $received_text->message;
             $user_color = $received_text->color;
-
-            //construir el mensaje a retransmitir y encriptar el mensaje
-            $response_text = Socket::EncriptMessage(json_encode(array('type'=>'usermsg', 'name'=>$user_name, 'message'=>$user_message, 'color'=>$user_color)));
-
-            //recorrer los usuarios conectados y enviar el mensaje
-            foreach ($clients as $ws_client) {
-               Socket::SendMessage($response_text, $ws_client);
-            }
 
             // regresar al ciclo infito / while
             break 2;

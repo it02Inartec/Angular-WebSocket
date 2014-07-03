@@ -11,35 +11,10 @@
 		// crea un nuevo objeto WebSocket.
 		var wsUri = "ws://localhost:8080/websockets/php/server.php";
 		websocket = new WebSocket(wsUri);
-
+		debugger;
 		websocket.onopen = function(ev) { // conexión está abierta
-			$('#message_box').append("<div class=\"system_msg\">Bienvenido!<br /></div>"); // notificar al usuario
+			//$('#message_box').append("<div class=\"system_msg\">Bienvenido!<br /></div>"); // notificar al usuario
 		}
-
-		$('#send-btn').click(function(){ // usuario pulsa el botón enviar mensaje
-			var mymessage = $('#message').val(); // obtener el texto del mensaje
-			var myname = $('#name').val(); // obtener el nombre de usuario
-
-			if(myname == ""){ // nombre vacío?
-				alert("Ingrese un nombre!");
-				return;
-			}
-
-			if(mymessage == ""){ // mensaje vacío?
-				alert("Ingrese un mensaje!");
-				return;
-			}
-
-			// preparar los datos JSON
-			var msg = {
-				message: mymessage,
-				name: myname,
-				color : '<?php echo $colours[$user_colour]; ?>'
-			};
-
-			// convertir y enviar datos al servidor
-			websocket.send(JSON.stringify(msg));
-		});
 
 		//#### Mensaje recibido desde el servidor?
 		websocket.onmessage = function(ev) {
