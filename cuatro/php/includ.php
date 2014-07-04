@@ -1,4 +1,6 @@
 <?php
+    include 'ChromePhp.php';
+    ChromePhp::log('llego a includ.php!');
 	$colours = array('007AFF','FF7000','FF7000','15E25F','CFC700','CFC700','CF1100','CF00BE','F00');
 	$user_colour = array_rand($colours);
 ?>
@@ -11,7 +13,7 @@
 		// crea un nuevo objeto WebSocket.
 		var wsUri = "ws://localhost:8080/websockets/php/server.php";
 		websocket = new WebSocket(wsUri);
-		debugger;
+
 		websocket.onopen = function(ev) { // conexión está abierta
 			//$('#message_box').append("<div class=\"system_msg\">Bienvenido!<br /></div>"); // notificar al usuario
 		}

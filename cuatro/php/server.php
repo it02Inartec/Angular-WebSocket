@@ -31,7 +31,6 @@
          Socket::ValidationClient($ws_new, $header, $host, $port);
 
          // Preparamos el json que se recibira en chat.php cuando se conecta entra un usuario
-         //$response_new_client = Socket::EncriptMessage(json_encode(array('type'=>'system', 'message'=>Socket::GetClient($ws_new).' conectado')));
          $response_new_client = Socket::EncriptMessage(json_encode(array('type'=>'system', 'message'=>Socket::GetClient($ws_new).' conectado')));
 
          foreach ($clients as $ws_client) {

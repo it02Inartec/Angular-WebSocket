@@ -1,8 +1,5 @@
 <?php
 session_start();
-function salir(){
-    session_destroy();
-}
 ?>
 <!DOCTYPE html>
 <html ng-app='myApp'>
@@ -17,11 +14,7 @@ function salir(){
     <script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
     <script src="js/script.js"></script>
-    <script language="javascript" type="text/javascript">
-    function salir(){
-
-    }
-    </script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" type="text/javascript"></script>
 </head>
 <body>
     <div class="container">
@@ -44,15 +37,15 @@ function salir(){
             </div>
         <?php }
         if(!isset($_SESSION['usuario'])){ ?>
-            <div class="span1" ng-hide="true">
+            <div class="span1" ng-hide="true" ng-controller="logoutCtrl">
         <?php }
         else {
             include 'php/includ.php';
         ?>
-            <div class="span1" ng-hide="false">
+            <div class="span1" ng-hide="false" ng-controller="logoutCtrl">
         <?php }?>
-                <b>Bienvenido</b><input type="button" value="Salir" onclick="<?php //salir();?>">
-                <br>Usuario: {{aviso}}<?php if(isset($_SESSION['usuario'])) echo $_SESSION['usuario']; ?>
+                <b>Bienvenido</b><input type="button" value="Salir" ng-click="doLogout()" >
+                <br>Usuario: {{avisos}}
                 <div class="message_box" id="message_box"></div>
                 <div ng-include src="'partials/task.html'"></div>
             </div>
