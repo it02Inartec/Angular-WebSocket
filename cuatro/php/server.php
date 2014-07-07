@@ -57,7 +57,7 @@
             //obtener los datos enviados
             $user_name = $received_text->name;
             $user_message = $received_text->message;
-            $user_color = $received_text->color;
+            //$user_color = $received_text->color;
 
             // regresar al ciclo infito / while
             break 2;
