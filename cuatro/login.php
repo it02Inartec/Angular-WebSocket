@@ -16,7 +16,7 @@ session_start();
     <script src="js/script.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" type="text/javascript"></script>
 </head>
-<body>
+<body ng-controller="SesionCtrl">
     <div class="container">
         <hr>
         <?php
@@ -40,12 +40,13 @@ session_start();
             <div class="span1" ng-hide="true" ng-controller="logoutCtrl">
         <?php }
         else {
-            include 'php/includ.php';
+            //include 'php/includ.php';
         ?>
             <div class="span1" ng-hide="false" ng-controller="logoutCtrl">
         <?php }?>
                 <b>Bienvenido</b><input type="button" value="Salir" ng-click="doLogout()" >
                 <br>Usuario: {{avisos}}
+                <div ng-include="myTemplate"></div>
                 <div class="message_box" id="message_box"></div>
                 <div ng-include src="'partials/task.html'"></div>
             </div>

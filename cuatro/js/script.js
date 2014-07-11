@@ -28,7 +28,8 @@ function loginCtrl($scope, $http) {
       else {
         $scope.usuario = "", $scope.contrasena = "", $scope.aviso = '';
         toogleDiv();
-      }
+        $scope.refresh();
+       }
     }).
     //si la peticion ajax NO fue exitosa se ejecuta error
     error(function(data, status) {
@@ -79,7 +80,6 @@ myAppModule.controller('userController', function($scope, $http) {
 });
 
 function logoutCtrl($scope, $http) {
-  debugger;
   $scope.avisos = 'nombreusuario';
   //al momento que le den click al ng-click doLogout() ejecutamos la funcion
   $scope.doLogout = function() {
@@ -103,3 +103,16 @@ function toogleDivAgain(){
   $(".span5").slideDown('slow');
   $(".span1").slideUp('fast').attr('ng-hide','true');
 }
+
+// Para "actualizar" luego de iniciar sesion
+myAppModule.controller('SesionCtrl', function($scope, $templateCache, $timeout) {
+  $scope.myTemplate = 'partials/cuerpo.php';
+
+  $scope.refresh = function() {
+      $templateCache.remove('partials/cuerpo.php');
+      $scope.myTemplate = '';
+      $timeout(function() {
+          $scope.myTemplate = 'partials/cuerpo.php';
+      },1000);
+  };
+});
